@@ -21,20 +21,19 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "notes")
+@Table(name = "whitelist_tb")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class Note  {
+public class Whitelist  {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String title;
+    private String client;
 
     @NotBlank
-    private String content;
+    private String regex;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -55,20 +54,20 @@ public class Note  {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getClient() {
+		return client;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setClient(String client) {
+		this.client = client;
 	}
 
-	public String getContent() {
-		return content;
+	public String getRegex() {
+		return regex;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setRegex(String regex) {
+		this.regex = regex;
 	}
 
 	public Date getCreatedAt() {
